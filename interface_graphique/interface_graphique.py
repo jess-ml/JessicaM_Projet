@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 from gestion_livres.gestionnaire_livres import GestionnaireLivres
 from gestion_utilisateurs.gestionnaire_utilisateurs import GestionnaireUtilisateurs
 from pret_retour.gestionnaire_prets import GestionnairePrets
@@ -11,25 +12,43 @@ class InterfaceGraphique:
         self.gestionnaire_prets = gestionnaire_prets
 
         self.master.title("Application de Gestion de Bibliothèque")
+        self.master.geometry("600x400")  # Taille de la fenêtre
+
+        # Couleurs
+        couleur_principale = "#3b5998"  # Bleu foncé
+        couleur_texte = "#FFFFFF"  # Blanc
+        couleur_bouton_texte = "#2d4262"  # Bleu plus foncé pour le texte des boutons
+        couleur_bouton_fond = "#4a6fa5"  # Bleu un peu plus clair pour le fond des boutons
+
+        # Style
+        style = ttk.Style()
+        style.configure("TFrame", background=couleur_principale)
+        style.configure("TButton", background=couleur_bouton_fond, foreground=couleur_bouton_texte, font=("Helvetica", 12, "bold"))
+        style.configure("TLabel", background=couleur_principale, foreground=couleur_texte, font=("Helvetica", 12, "italic bold"))
+        style.map("TButton", background=[("active", "#335080")])
+
+        # Titre en haut de l'interface
+        label_titre = ttk.Label(self.master, text="BIBLIOTHEQUE EN LIGNE EPSI", style="TLabel")
+        label_titre.pack(pady=10)
 
         # Listebox pour afficher les livres
         self.listbox_livres = tk.Listbox(self.master, height=10, width=50)
         self.listbox_livres.pack(pady=10)
 
         # Boutons pour les différentes fonctionnalités
-        self.bouton_ajouter_livre = tk.Button(self.master, text="Ajouter un livre", command=self.afficher_fenetre_ajout_livre)
+        self.bouton_ajouter_livre = ttk.Button(self.master, text="Ajouter un livre", command=self.afficher_fenetre_ajout_livre)
         self.bouton_ajouter_livre.pack(pady=10)
 
-        self.bouton_supprimer_livre = tk.Button(self.master, text="Supprimer un livre", command=self.afficher_fenetre_suppression_livre)
+        self.bouton_supprimer_livre = ttk.Button(self.master, text="Supprimer un livre", command=self.afficher_fenetre_suppression_livre)
         self.bouton_supprimer_livre.pack(pady=10)
 
-        self.bouton_modifier_livre = tk.Button(self.master, text="Modifier un livre", command=self.afficher_fenetre_modification_livre)
+        self.bouton_modifier_livre = ttk.Button(self.master, text="Modifier un livre", command=self.afficher_fenetre_modification_livre)
         self.bouton_modifier_livre.pack(pady=10)
 
-        self.bouton_rechercher_livres = tk.Button(self.master, text="Rechercher des livres", command=self.rechercher_livres)
+        self.bouton_rechercher_livres = ttk.Button(self.master, text="Rechercher des livres", command=self.rechercher_livres)
         self.bouton_rechercher_livres.pack(pady=10)
 
-        self.bouton_lister_livres = tk.Button(self.master, text="Lister les livres", command=self.lister_livres)
+        self.bouton_lister_livres = ttk.Button(self.master, text="Lister les livres", command=self.lister_livres)
         self.bouton_lister_livres.pack(pady=10)
 
         # Affiche initialement la liste des livres
@@ -70,7 +89,7 @@ class InterfaceGraphique:
         entry_isbn = tk.Entry(fenetre_ajout, width=30)
         entry_isbn.pack(pady=5)
 
-        bouton_enregistrer = tk.Button(fenetre_ajout, text="Enregistrer", command=lambda: self.ajouter_livre_saisie(entry_titre.get(), entry_auteur.get(), entry_genre.get(), entry_isbn.get(), fenetre_ajout))
+        bouton_enregistrer = ttk.Button(fenetre_ajout, text="Enregistrer", command=lambda: self.ajouter_livre_saisie(entry_titre.get(), entry_auteur.get(), entry_genre.get(), entry_isbn.get(), fenetre_ajout))
         bouton_enregistrer.pack(pady=10)
 
     def ajouter_livre_saisie(self, titre, auteur, genre, isbn, fenetre):
@@ -103,7 +122,7 @@ class InterfaceGraphique:
         entry_isbn = tk.Entry(fenetre_modification, width=30)
         entry_isbn.pack(pady=5)
 
-        bouton_enregistrer_modification = tk.Button(fenetre_modification, text="Enregistrer", command=lambda: self.modifier_livre_saisie(entry_ancien_titre.get(), entry_nouveau_titre.get(), entry_auteur.get(), entry_genre.get(), entry_isbn.get(), fenetre_modification))
+        bouton_enregistrer_modification = ttk.Button(fenetre_modification, text="Enregistrer", command=lambda: self.modifier_livre_saisie(entry_ancien_titre.get(), entry_nouveau_titre.get(), entry_auteur.get(), entry_genre.get(), entry_isbn.get(), fenetre_modification))
         bouton_enregistrer_modification.pack(pady=10)
 
     def modifier_livre_saisie(self, ancien_titre, nouveau_titre, auteur, genre, isbn, fenetre):
@@ -120,7 +139,7 @@ class InterfaceGraphique:
         entry_titre = tk.Entry(fenetre_suppression, width=30)
         entry_titre.pack(pady=5)
 
-        bouton_supprimer = tk.Button(fenetre_suppression, text="Supprimer", command=lambda: self.supprimer_livre_saisie(entry_titre.get(), fenetre_suppression))
+        bouton_supprimer = ttk.Button(fenetre_suppression, text="Supprimer", command=lambda: self.supprimer_livre_saisie(entry_titre.get(), fenetre_suppression))
         bouton_supprimer.pack(pady=10)
 
     def supprimer_livre_saisie(self, titre, fenetre):
