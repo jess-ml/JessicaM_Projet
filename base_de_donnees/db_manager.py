@@ -1,4 +1,3 @@
-# Dans base_de_donnees/db_manager.py
 import sqlite3
 
 class DatabaseManager:
@@ -7,7 +6,6 @@ class DatabaseManager:
         self.cursor = self.conn.cursor()
 
     def creer_tables(self):
-        # À adapter en fonction des modèles de données (livres, utilisateurs, prêts)
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS livres (
                 id INTEGER PRIMARY KEY,
@@ -17,15 +15,11 @@ class DatabaseManager:
                 isbn TEXT
             )
         """)
-        # Crée d'autres tables pour les utilisateurs, les prêts, etc.
+        
 
     def sauvegarder_livre(self, livre):
-        # À adapter en fonction de la structure de la base de données
         self.cursor.execute("INSERT INTO livres VALUES (?, ?, ?, ?, ?)", (livre.id, livre.titre, livre.auteur, livre.genre, livre.isbn))
         self.conn.commit()
 
-    # Ajoute des méthodes similaires pour sauvegarder/charger les utilisateurs, prêts, etc.
-
-# Instancie le gestionnaire de base de données
 db_manager = DatabaseManager()
 db_manager.creer_tables()
