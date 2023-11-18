@@ -32,5 +32,3 @@ class GestionnaireLivres:
 
     def lister_livres(self):
         return [str(livre) for livre in self.livres]
-
-# Ajoute d'autres méthodes si nécessaire
