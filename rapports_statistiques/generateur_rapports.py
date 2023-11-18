@@ -1,4 +1,3 @@
-# Dans rapports_statistiques/generateur_rapports.py
 from collections import Counter
 
 class GenerateurRapports:
