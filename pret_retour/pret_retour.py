@@ -1,4 +1,3 @@
-# Dans pret_retour/pret_retour.py
 from datetime import datetime, timedelta
 
 
