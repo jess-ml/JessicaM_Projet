@@ -1,4 +1,3 @@
-# Dans gestion_livres/gestionnaire_livres.py
 from .livre import Livre
 
 class GestionnaireLivres:
