@@ -1,4 +1,3 @@
-# Dans gestion_livres/livre.py
 class Livre:
     def __init__(self, titre, auteur, genre, isbn):
         self.titre = titre
