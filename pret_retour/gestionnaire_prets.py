@@ -1,4 +1,3 @@
-# gestionnaire_prets.py
 from datetime import datetime, timedelta
 
 class GestionnairePrets:
