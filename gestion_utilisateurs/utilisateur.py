@@ -1,5 +1,3 @@
-# Dans gestion_utilisateurs/utilisateur.py
-
 class Utilisateur:
     def _init_(self, nom, prenom, categorie):
         self.nom = nom
